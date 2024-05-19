@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce Sederhana</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Selamat Datang Wida Store </h1>
+    </header>
+    <div class="navbar">
+      <a href="#beranda">Beranda</a>
+      <a href="#produk">Produk</a>
+      <a href="#keranjang">Keranjang</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <div class="container" id="beranda">
+      <h2 class="text-center">Beranda</h2>
+      <div class="image-container">
+        <img class="image" src="home 1.jpg" alt="Deskripsi gambar" />
+        <div class="overlay">
+          <h2></h2>
+          <!-- Anda bisa menambahkan teks tambahan di sini -->
+        </div>
+      </div>
+
+      <!-- Konten Beranda -->
+    </div>
+    <div class="container" id="produk">
+      <h2>Produk</h2>
+      <div class="produk">
+        <div class="produk-item">
+          <h3>URBAN&CO Basic Shoes AllynWhite</h3>
+          <img src="WhatsApp Image 2024-05-19 at 14.15.37_79395761.jpg" alt="Deskripsi produk" style="max-width: 200px" />
+          <!-- Mengurangi lebar gambar -->
+          <p>Harga: Rp. 159.900 </p>
+          <button class="btn btn-succes" onclick="tambahKeKeranjang('URBAN&CO Basic Shoes AllynWhite', 159900)" style="background-color: #ff5722; color: #fff">Tambahkan ke Keranjang</button>
+          <button
+            class="btn btn-succes"
+            onclick="beliProduk('https://id.shp.ee/V7YZp1d')"
+            style="background-color: #28a745; color: #fff"
+          >
+            Beli
+          </button>
+        </div>
+        <div class="produk-item">
+          <h3>Luxia - Sasha Flatshoes</h3>
+          <p></p>
+          <img src="produk 2.jpg" alt="Deskripsi produk" style="max-width: 260px" />
+          <!-- Mengurangi lebar gambar -->
+          <p>Harga: Rp 299.000</p>
+          <button onclick="tambahKeKeranjang('Luxia - Sasha Flatshoes', 299000)" style="background-color: #ff5722; color: #fff">Tambahkan ke Keranjang</button>
+          <button
+            onclick="beliProduk('https://id.shp.ee/6dPnuez')"
+            style="background-color: #28a745; color: #fff"
+          >
+            Beli
+          </button>
+        </div>
+        <div class="produk-item">
+          <h3>Rowey Flat Shoes Elegant Kate</h3>
+          <img src="produk 3.jpg" alt="Deskripsi produk" style="max-width: 260px" />
+          <!-- Mengurangi lebar gambar -->
+          <p>Harga: Rp 144.750</p>
+          <button onclick="tambahKeKeranjang('Rowey Flat Shoes Elegant Kate', 144750)" style="background-color: #ff5722; color: #fff">Tambahkan ke Keranjang</button>
+          <button
+            onclick="beliProduk('https://id.shp.ee/sMAtGxh')"
+            style="background-color: #28a745; color: #fff"
+          >
+            Beli"
+          </button>
+        </div>
+        <div class="produk-item">
+          <h3>ZODE Victorria Flats</h3>
+          <img src="produk 4.jpg" alt="Deskripsi produk" style="max-width: 200px" />
+          <!-- Mengurangi lebar gambar -->
+          <p>Harga: Rp 115.000</p>
+          <button onclick="tambahKeKeranjang('ZODE Victorria Flats', 115000)" style="background-color: #ff5722; color: #fff">Tambahkan ke Keranjang</button>
+          <button
+            onclick="beliProduk('https://shp.ee/b5ysc8o')"
+            style="background-color: #28a745; color: #fff"
+          >
+            Beli"
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="keranjang">
+      <h2>Keranjang Belanja</h2>
+      <div class="keranjang" id="keranjang">
+        <ul id="keranjang-item"></ul>
+        <button style="background-color: #007bff; color: #fff" onclick="beliWhatsApp()">Beli</button>
+        <button style="background-color: #dc3545; color: #fff" onclick="kosongkanKeranjang()">Kosongkan Keranjang</button>
+      </div>
+    </div>
+    <div class="aboutme">
+      <h2>Tentang Kami</h2>
+      <p class="text-center">
+        Flatshoes adalah sepatu datar yang nyaman dan sering kali fashionable untuk dipakai sehari-hari. Mereka tidak memiliki hak tinggi, sehingga memberikan kenyamanan sepanjang hari. Flatshoes tersedia dalam berbagai desain, bahan, dan warna yang sesuai dengan berbagai gaya dan kesempatan. Mereka cocok dipadukan dengan berbagai pakaian, mulai dari pakaian kasual hingga semi-formal, sehingga menjadi pilihan yang populer bagi banyak orang.
+      </p>
+    </div>
+    <div class="kontak" id="kontak">
+      <h2>Kontak</h2>
+      <p>
+        Jika Anda memiliki pertanyaan, hubungi kami di:
+        <a href="https://wa.me/62895320056266">0895320056266</a>
+      </p>
+      <p>
+        atau di instagram:
+        <a href="https://www.instagram.com/widaameliiia?igsh=MTR5Z255YXBwYWUzdA==">widaameliiia</a>
+      </p>
+    </div>
+    <footer>
+      <p>Hak Cipta &copy; 2024 Wida Store</p>
+    </footer>
+    <script>
+      // JavaScript untuk keranjang
+      let keranjangItems = [];
+
+      function tambahKeKeranjang(nama, harga) {
+        keranjangItems.push({ nama: nama, harga: harga });
+        renderKeranjang();
+      }
+
+      function renderKeranjang() {
+        const keranjangElement = document.getElementById("keranjang-item");
+        keranjangElement.innerHTML = "";
+        let totalHarga = 0;
+        keranjangItems.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = `${item.nama} - Rp ${item.harga.toLocaleString()}`; // Ubah dolar menjadi rupiah
+          keranjangElement.appendChild(li);
+          totalHarga += item.harga;
+        });
+        const totalHargaElement = document.createElement("li");
+        totalHargaElement.textContent = `Total: Rp ${totalHarga.toLocaleString()}`; // Ubah dolar menjadi rupiah
+        keranjangElement.appendChild(totalHargaElement);
+      }
+
+      function kosongkanKeranjang() {
+        keranjangItems = [];
+        renderKeranjang();
+      }
+
+      function beliProduk(url) {
+        window.location.href = url;
+      }
+
+      function beliWhatsApp() {
+        // Ganti nomor telepon dengan nomor WhatsApp Anda
+        window.location.href = "https://wa.me/62895320056266";
+      }
+    </script>
+  </body>
+</html>
